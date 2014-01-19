@@ -29,10 +29,10 @@ If you set `unattended_mail` to an e-mail address, make suer `mailx` command is 
 ```yaml
 - hosts: all
   roles:
-- - role: jnv.unattended-upgrades
--   unattended_allowed_origins: [security, updates]
--   unattended_package_blacklist: [cowsay, vim]
--   unattended_mail: 'root@example.com'
+  - role: jnv.unattended-upgrades
+    unattended_allowed_origins: [security, updates]
+    unattended_package_blacklist: [cowsay, vim]
+    unattended_mail: 'root@example.com'
 ```
 
 ## License
