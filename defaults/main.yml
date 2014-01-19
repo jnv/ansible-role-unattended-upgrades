@@ -1,0 +1,37 @@
+---
+#Unattended-Upgrade::Allowed-Origins
+# Automatically upgrade packages from these (origin:archive) pairs
+# Allowed: security, updates, proposed, backports
+unattended_allowed_origins: [security]
+
+#Unattended-Upgrade::Package-Blacklist
+# List of packages to not update
+unattended_package_blacklist: []
+
+#Unattended-Upgrade::AutoFixInterruptedDpkg
+# On a unclean dpkg exit unattended-upgrades will run
+#   dpkg --force-confold --configure -a
+# The default is true, to ensure updates keep getting installed
+unattended_autofix_interrupted_dpkg: true
+
+#Unattended-Upgrade::Mail
+# Send email to this address for problems or packages upgrades
+# If empty or unset then no email is sent, make sure that you
+# have a working mail setup on your system. A package that provides
+# 'mailx' must be installed.
+unattended_mail: false
+
+#Unattended-Upgrade::MailOnlyOnError
+# Set this value to "true" to get emails only on errors. Default
+# is to always send a mail if Unattended-Upgrade::Mail is set
+unattended_mail_only_on_error: false
+
+#Unattended-Upgrade::Remove-Unused-Dependencies
+# Do automatic removal of new unused dependencies after the upgrade
+# (equivalent to apt-get autoremove)
+unattended_remove_unused_dependencies: false
+
+#Unattended-Upgrade::Automatic-Reboot
+# Automatically reboot *WITHOUT CONFIRMATION* if a
+# the file /var/run/reboot-required is found after the upgrade
+unattended_automatic_reboot: false
