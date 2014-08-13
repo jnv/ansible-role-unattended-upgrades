@@ -1,11 +1,12 @@
-// Automatically upgrade packages from these origin patterns
+// Unattended-Upgrade::Origins-Pattern controls which packages are
+// upgraded.
 Unattended-Upgrade::Origins-Pattern {
 {% for origin in unattended_origins_patterns %}
         "{{ origin }}";
 {% endfor %}
 };
 
-// List of packages to not update
+// List of packages to not update (regexp are supported)
 Unattended-Upgrade::Package-Blacklist {
 {% for package in unattended_package_blacklist %}
       "{{package}}";
@@ -61,6 +62,10 @@ Unattended-Upgrade::Remove-Unused-Dependencies "true";
 Unattended-Upgrade::Automatic-Reboot "true";
 {% endif %}
 
+// If automatic reboot is enabled and needed, reboot at the specific
+// time instead of immediately
+//  Default: "now"
+//Unattended-Upgrade::Automatic-Reboot-Time "02:00";
 
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
