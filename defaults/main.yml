@@ -1,8 +1,9 @@
 ---
-#Unattended-Upgrade::Allowed-Origins
-# Automatically upgrade packages from these (origin:archive) pairs
-# Allowed: security, updates, proposed, backports
-unattended_allowed_origins: [security]
+#Unattended-Upgrade::Origins-Pattern
+# Automatically upgrade packages from these origin patterns
+# e.g.: 'o=Debian,a=stable', 'o=Debian,a=stable-updates'
+unattended_origins_patterns : 
+  - 'origin=Debian,archive=stable,label=Debian-Security'
 
 #Unattended-Upgrade::Package-Blacklist
 # List of packages to not update
@@ -13,6 +14,19 @@ unattended_package_blacklist: []
 #   dpkg --force-confold --configure -a
 # The default is true, to ensure updates keep getting installed
 unattended_autofix_interrupted_dpkg: true
+
+#Unattended-Upgrade::MinimalSteps
+# Split the upgrade into the smallest possible chunks so that
+# they can be interrupted with SIGUSR1. This makes the upgrade
+# a bit slower but it has the benefit that shutdown while a upgrade
+# is running is possible (with a small delay)
+unattended_minimal_steps: false
+
+#Unattended-Upgrade::InstallOnShutdown
+# Install all unattended-upgrades when the machine is shuting down
+# instead of doing it in the background while the machine is running
+# This will (obviously) make shutdown slower
+unattended_install_on_shutdown: false
 
 #Unattended-Upgrade::Mail
 # Send email to this address for problems or packages upgrades
