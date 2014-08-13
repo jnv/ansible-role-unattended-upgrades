@@ -2,8 +2,7 @@
 #Unattended-Upgrade::Origins-Pattern
 # Automatically upgrade packages from these origin patterns
 # e.g.: 'o=Debian,a=stable', 'o=Debian,a=stable-updates'
-unattended_origins_patterns :
-  - 'origin=Debian,archive=stable,label=Debian-Security'
+unattended_origins_patterns: []
 
 #Unattended-Upgrade::Package-Blacklist
 # List of packages to not update

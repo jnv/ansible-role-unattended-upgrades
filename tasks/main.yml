@@ -1,4 +1,7 @@
 ---
+- name: add distribution-specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+
 - name: install unattended-upgrades
   apt: pkg=unattended-upgrades state=present
   tags: unattended
