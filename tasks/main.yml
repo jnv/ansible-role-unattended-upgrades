@@ -3,9 +3,9 @@
   apt: pkg=unattended-upgrades state=present
   tags: unattended
 
-- name: create APT periodic configuration
-  template: >
-    src=periodic.j2 dest=/etc/apt/apt.conf.d/10periodic
+- name: create APT auto-upgrades configuration
+  copy: >
+    src=auto-upgrades dest=/etc/apt/apt.conf.d/20auto-upgrades
     owner=root group=root mode=0644
   tags: unattended
 

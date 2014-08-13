@@ -1,7 +1,7 @@
-// Automatically upgrade packages from these (origin:archive) pairs
-Unattended-Upgrade::Allowed-Origins {
-{% for origin in unattended_allowed_origins %}
-        "${distro_id}:${distro_codename}-{{ origin }}";
+// Automatically upgrade packages from these origin patterns
+Unattended-Upgrade::Origins-Pattern {
+{% for origin in unattended_origins_patterns %}
+        "{{ origin }}";
 {% endfor %}
 };
 
@@ -20,16 +20,20 @@ Unattended-Upgrade::Package-Blacklist {
 Unattended-Upgrade::AutoFixInterruptedDpkg "false";
 {% endif %}
 
+{% if unattended_minimal_steps %}
 // Split the upgrade into the smallest possible chunks so that
 // they can be interrupted with SIGUSR1. This makes the upgrade
 // a bit slower but it has the benefit that shutdown while a upgrade
 // is running is possible (with a small delay)
-//Unattended-Upgrade::MinimalSteps "true";
+Unattended-Upgrade::MinimalSteps "true";
+{% endif %}
 
+{% if unattended_install_on_shutdown %}
 // Install all unattended-upgrades when the machine is shuting down
 // instead of doing it in the background while the machine is running
 // This will (obviously) make shutdown slower
-//Unattended-Upgrade::InstallOnShutdown "true";
+Unattended-Upgrade::InstallOnShutdown "true";
+{% endif %}
 
 {% if unattended_mail %}
 // Send email to this address for problems or packages upgrades
