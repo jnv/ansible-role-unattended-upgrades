@@ -55,6 +55,20 @@ Additionaly unattended-upgrades support two macros (variables), derived from `/e
 * `${distro_id}` – Installed distribution name, e.g. `Debian` or `Ubuntu`.
 * `${distro_codename}` – Installed codename, e.g. `jessie` or `trusty`.
 
+## Role Usage Example
+
+```yaml
+- hosts: all
+  roles:
+  - role: jnv.unattended-upgrades
+    unattended_origins_patterns:
+    - 'origin=Ubuntu,archive=${distro_codename}-security'
+    - 'o=Ubuntu,a=${distro_codename}-updates'
+    unattended_package_blacklist: [cowsay, vim]
+    unattended_mail: 'root@example.com'
+```
+
+
 ### Patterns Examples
 
 By default, only security updates are allowed for both Ubuntu and Debian. You can add more patterns to allow unattended-updates install more packages automatically, however be aware that automated major updates may potentially break your system.
@@ -80,19 +94,6 @@ unattended_origins_patterns:
   - 'o=Ubuntu,a=${distro_codename}'
   - 'o=Ubuntu,a=${distro_codename}-updates'
   - 'o=Ubuntu,a=${distro_codename}-proposed-updates'
-```
-
-## Role Usage Example
-
-```yaml
-- hosts: all
-  roles:
-  - role: jnv.unattended-upgrades
-    unattended_origins_patterns:
-    - 'origin=Ubuntu,archive=${distro_codename}-security'
-    - 'o=Ubuntu,a=${distro_codename}-updates'
-    unattended_package_blacklist: [cowsay, vim]
-    unattended_mail: 'root@example.com'
 ```
 
 ## License
