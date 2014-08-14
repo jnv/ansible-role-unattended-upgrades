@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jnv/ansible-role-unattended-upgrades.svg?branch=master)](https://travis-ci.org/jnv/ansible-role-unattended-upgrades)
 
-Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrades) for Ubuntu and Debian (since Wheezy), to periodically install security upgrades,
+Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrades) for Ubuntu and Debian (since Wheezy), to periodically install security upgrades.
 
 ## Requirements
 
