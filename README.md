@@ -8,31 +8,31 @@ Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrade
 
 The role uses [apt module](http://docs.ansible.com/apt_repository_module.html) which has additional dependencies. You can use [bootstrap-debian](https://github.com/cederberg/ansible-bootstrap-debian) role to setup common Ansible requirements on Debian-based systems.
 
-If you set `unattended_mail` to an e-mail address, make suer `mailx` command is available and your system is able to send e-mails.
+If you set `unattended_mail` to an e-mail address, make sure `mailx` command is available and your system is able to send e-mails.
 
 The role requires unattended-upgrades version 0.70 and newer, which is available since Debian Wheezy and Ubuntu 12.04 respectively. This is due to [Origins Patterns](#origins-patterns) usage; if this is not available on your system, you may use [the first version of the role](https://github.com/jnv/ansible-role-unattended-upgrades/tree/v0.1).
 
 ## Role Variables
 
 * `unattended_origins_patterns`: array of origins patterns to determine whether the package can be automatically installed, for more details see [Origins Patterns](#origins-patterns) below.
-  * Default for Debian: `['origin=Debian,archive=${distro_codename},label=Debian-Security']`
-  * Default for Ubuntu: `['origin=Ubuntu,archive=${distro_codename}-security,label=Ubuntu']`
+    * Default for Debian: `['origin=Debian,archive=${distro_codename},label=Debian-Security']`
+    * Default for Ubuntu: `['origin=Ubuntu,archive=${distro_codename}-security,label=Ubuntu']`
 * `unattended_package_blacklist`: packages which won't be automatically upgraded
-  * Default: `[]`
+    * Default: `[]`
 * `unattended_autofix_interrupted_dpkg`: whether on unclean dpkg exit to run `dpkg --force-confold --configure -a`
-  * Default: `true`
+    * Default: `true`
 * `unattended_minimal_steps`: split the upgrade into the smallest possible chunks so that they can be interrupted with SIGUSR1.
-  * Default: `false`
+    * Default: `false`
 * `unattended_install_on_shutdown`: install all unattended-upgrades when the machine is shuting down.
-  * Default: `false`
+    * Default: `false`
 * `unattended_mail`: e-mail address to send information about upgrades or problems with unattended upgrades
-  * Default: `false` (don't send any e-mail)
+    * Default: `false` (don't send any e-mail)
 * `unattended_mail_only_on_error`: send e-mail only on errors, otherwise e-mail will be sent every time there's a package upgrade.
-  * Default: `false`
+    * Default: `false`
 * `unattended_remove_unused_dependencies`: do automatic removal of new unused dependencies after the upgrade.
-  * Default: `false`
+    * Default: `false`
 * `unattended_automatic_reboot`: Automatically reboot system if any upgraded package requires it, immediately after the upgrade.
-  * Default: `false`
+    * Default: `false`
 
 
 ## Origins Patterns
