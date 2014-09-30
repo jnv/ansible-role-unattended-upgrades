@@ -1,9 +1,15 @@
 // Unattended-Upgrade::Origins-Pattern controls which packages are
 // upgraded.
 Unattended-Upgrade::Origins-Pattern {
-{% for origin in unattended_origins_patterns %}
-        "{{ origin }}";
-{% endfor %}
+{% if unattended_origins_patterns is defined %}
+  {% for origin in unattended_origins_patterns %}
+    "{{ origin }}";
+  {% endfor %}
+{% else %}
+  {% for origin in __unattended_origins_patterns %}
+   "{{ origin }}";
+  {% endfor %}
+{% endif %}
 };
 
 // List of packages to not update (regexp are supported)

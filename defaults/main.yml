@@ -2,7 +2,12 @@
 #Unattended-Upgrade::Origins-Pattern
 # Automatically upgrade packages from these origin patterns
 # e.g.: 'o=Debian,a=stable', 'o=Debian,a=stable-updates'
-unattended_origins_patterns: []
+#
+# Left unset, distribution-specific defaults will be used through
+# __unattended_origins_patterns variable only if this variable
+#   is not provided externally
+# REFS https://github.com/ansible/ansible/issues/8121
+#unattended_origins_patterns: []
 
 #Unattended-Upgrade::Package-Blacklist
 # List of packages to not update
