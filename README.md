@@ -4,6 +4,10 @@
 
 Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrades) for Ubuntu and Debian (since Wheezy), to periodically install security upgrades.
 
+**NOTE:** If you have used version 0.0.1 of the role, you can delete the file `/etc/apt/apt.conf.d/10periodic` as it is not needed anymore. You can use the following one-shot command:
+
+    ansible -m file -a "state=absent path=/etc/apt/apt.conf.d/10periodic" <host-pattern>
+
 ## Requirements
 
 The role uses [apt module](http://docs.ansible.com/apt_repository_module.html) which has additional dependencies. You can use [bootstrap-debian](https://github.com/cederberg/ansible-bootstrap-debian) role to setup common Ansible requirements on Debian-based systems.
