@@ -6,6 +6,11 @@
   apt: pkg=unattended-upgrades state=present
   tags: unattended
 
+- name: install reboot dependencies
+  include: reboot.yml
+  when: unattended_automatic_reboot
+  tags: unattended
+
 - name: create APT auto-upgrades configuration
   copy: >
     src=auto-upgrades dest=/etc/apt/apt.conf.d/20auto-upgrades
