@@ -6,8 +6,8 @@
   apt: pkg=unattended-upgrades state=present
   tags: unattended
 
-- name: install update-notifier-common
-  apt: pkg=update-notifier-common state=present
+- name: install reboot dependencies
+  include: reboot.yml
   when: unattended_automatic_reboot
   tags: unattended
 

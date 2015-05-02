@@ -1,0 +1,12 @@
+---
+- name: install update-notifier-common
+  apt: pkg=update-notifier-common state=present
+  register: install_reboot_dependency
+  ignore_errors: true
+  tags: unattended
+
+- name: abort if automatic reboot is unavailable
+  fail: msg="The unattended_automatic_reboot option was selected but the system has no means to reboot automatically"
+  when: install_reboot_dependency | failed
+  tags: unattended
+
