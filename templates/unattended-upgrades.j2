@@ -75,6 +75,12 @@ Unattended-Upgrade::Automatic-Reboot "true";
 Unattended-Upgrade::Automatic-Reboot-Time "{{ unattended_automatic_reboot_time }}";
 {% endif %}
 
+{% if unattended_ignore_apps_require_restart %}
+// Do upgrade application even if it requires restart after upgrade
+// I.e. "XB-Upgrade-Requires: app-restart" is set in the debian/control file
+Unattended-Upgrade::IgnoreAppsRequireRestart "true";
+{% endif %}
+
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
 //Acquire::http::Dl-Limit "70";

@@ -58,3 +58,8 @@ unattended_automatic_reboot: false
 # If automatic reboot is enabled and needed, reboot at the specific
 # time instead of immediately
 unattended_automatic_reboot_time: false
+
+#Unattended-Upgrade::IgnoreAppsRequireRestart
+# Do upgrade application even if it requires restart after upgrade
+# I.e. "XB-Upgrade-Requires: app-restart" is set in the debian/control file
+unattended_ignore_apps_require_restart: false
