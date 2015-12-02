@@ -73,6 +73,12 @@ Unattended-Upgrade::Automatic-Reboot "true";
 //  Default: "now"
 //Unattended-Upgrade::Automatic-Reboot-Time "02:00";
 
+{% if unattended_ignore_apps_require_restart %}
+// Do not upgrade apps if "XB-Upgrade-Requires: app-restart"
+Unattended-Upgrade::IgnoreAppsRequireRestart "true";
+{% endif %}
+
+
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
 //Acquire::http::Dl-Limit "70";
