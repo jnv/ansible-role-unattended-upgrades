@@ -25,7 +25,7 @@ If you enable automatic reboot feature (`unattended_automatic_reboot`), the role
 ## Role Variables
 
 * `unattended_origins_patterns`: array of origins patterns to determine whether the package can be automatically installed, for more details see [Origins Patterns](#origins-patterns) below.
-    * Default for Debian: `['origin=Debian,archive=${distro_codename},label=Debian-Security']`
+    * Default for Debian: `['origin=Debian,codename=${distro_codename},label=Debian-Security']`
     * Default for Ubuntu: `['origin=Ubuntu,archive=${distro_codename}-security,label=Ubuntu']`
 * `unattended_package_blacklist`: packages which won't be automatically upgraded
     * Default: `[]`
@@ -88,7 +88,7 @@ By default, only security updates are allowed for both Ubuntu and Debian. You ca
 ```yaml
 # Archive based matching
 unattended_origins_patterns:
-  - 'origin=Debian,archive=${distro_codename},label=Debian-Security' # resolves to archive=jessie
+  - 'origin=Debian,codename=${distro_codename},label=Debian-Security' # resolves to codename=jessie
   - 'o=Debian,a=stable'
   - 'o=Debian,a=stable-updates'
   - 'o=Debian,a=proposed-updates'
