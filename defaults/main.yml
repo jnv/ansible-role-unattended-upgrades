@@ -53,3 +53,8 @@ unattended_remove_unused_dependencies: false
 # Automatically reboot *WITHOUT CONFIRMATION* if a
 # the file /var/run/reboot-required is found after the upgrade
 unattended_automatic_reboot: false
+
+
+#Unattended-Upgrade::IgnoreAppsRequireRestart
+#Do not upgrade apps if "XB-Upgrade-Requires: app-restart"
+unattended_ignore_apps_require_restart: false
