@@ -43,7 +43,8 @@ If you enable automatic reboot feature (`unattended_automatic_reboot`), the role
     * Default: `false`
 * `unattended_automatic_reboot`: Automatically reboot system if any upgraded package requires it, immediately after the upgrade.
     * Default: `false`
-
+* `unattended_automatic_reboot_time`: If automatic reboot is enabled and needed, reboot at the specific time instead of immediately.
+    * Default: `now`
 
 ## Origins Patterns
 

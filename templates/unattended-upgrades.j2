@@ -68,10 +68,12 @@ Unattended-Upgrade::Remove-Unused-Dependencies "true";
 Unattended-Upgrade::Automatic-Reboot "true";
 {% endif %}
 
+{% if unattended_automatic_reboot_time %}
 // If automatic reboot is enabled and needed, reboot at the specific
 // time instead of immediately
 //  Default: "now"
-//Unattended-Upgrade::Automatic-Reboot-Time "02:00";
+//Unattended-Upgrade::Automatic-Reboot-Time "{{unattended_automatic_reboot_time}}";
+{% endif %}
 
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
