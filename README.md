@@ -18,7 +18,7 @@ The role requires unattended-upgrades version 0.70 and newer, which is available
 
 ### Automatic Reboot
 
-If you enable automatic reboot feature (`unattended_automatic_reboot`), the role will install `update-notifier-common` package, which is required for detecting and executing reboot after the upgrade.
+If you enable automatic reboot feature (`unattended_automatic_reboot`), the role will install `update-notifier-common` package, which is required for detecting and executing reboot after the upgrade. You may optionally define a specific time for rebooting (`unattended_automatic_reboot_time`).
 
 **NOTE:** This feature is not currently supported on Debian Jessie, due to a missing replacement for the said package. Attempt to enable this feature on unsupported system will cause a failure. See [the discussion in #6](https://github.com/jnv/ansible-role-unattended-upgrades/issues/6) for more details.
 
@@ -43,6 +43,8 @@ If you enable automatic reboot feature (`unattended_automatic_reboot`), the role
     * Default: `false`
 * `unattended_automatic_reboot`: Automatically reboot system if any upgraded package requires it, immediately after the upgrade.
     * Default: `false`
+* `unattended_automatic_reboot_time`: Automatically reboot system if any upgraded package requires it, at the specific time (_HH:MM_) instead of immediately after the upgrade.
+    * Default: `false`
 
 
 ## Origins Patterns
@@ -60,7 +62,7 @@ Pattern is composed from specific keywords:
 
 You can review the available repositories using `apt-cache policy` and debug your choice using `unattended-upgrades -d` command on a target system.
 
-Additionaly unattended-upgrades support two macros (variables), derived from `/etc/debian_version`:
+Additionally unattended-upgrades support two macros (variables), derived from `/etc/debian_version`:
 
 * `${distro_id}` – Installed distribution name, e.g. `Debian` or `Ubuntu`.
 * `${distro_codename}` – Installed codename, e.g. `jessie` or `trusty`.
