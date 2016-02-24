@@ -22,6 +22,10 @@ If you enable automatic reboot feature (`unattended_automatic_reboot`), the role
 
 **NOTE:** This feature is not currently supported on Debian Jessie, due to a missing replacement for the said package. Attempt to enable this feature on unsupported system will cause a failure. See [the discussion in #6](https://github.com/jnv/ansible-role-unattended-upgrades/issues/6) for more details.
 
+## Disabled Cron Jobs
+
+On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.daily/apt` file has been renamed to `apt.disabled`. This is possibly provider's decision, to save some CPU cycles. Use [enable-standard-cronjobs](https://github.com/Yannik/ansible-role-enable-standard-cronjobs) role to reenable unattended-upgrades. See also discussion in [#9](https://github.com/jnv/ansible-role-unattended-upgrades/issues/9).
+
 ## Role Variables
 
 * `unattended_origins_patterns`: array of origins patterns to determine whether the package can be automatically installed, for more details see [Origins Patterns](#origins-patterns) below.
