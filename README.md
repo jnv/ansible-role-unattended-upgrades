@@ -61,10 +61,12 @@ Pattern is composed from specific keywords:
 * `c`,`component`   – e.g. `main`, `crontrib`, `non-free` (`component=main`)
 * `l`,`label` – e.g. `Debian`, `Debian-Security`, `Ubuntu`
 * `o`,`origin` – e.g. `Debian`, `Unofficial Multimedia Packages`, `Ubuntu`
-* `n`,`codename` – e.g. `jessie`, `jessie-updates`, `trusty`
+* `n`,`codename` – e.g. `jessie`, `jessie-updates`, `trusty` (this is only supported with `unattended-upgrades` >= 0.80)
 * `site` – e.g. `http.debian.net`
 
 You can review the available repositories using `apt-cache policy` and debug your choice using `unattended-upgrades -d` command on a target system.
+
+Using `${distro_codename}` should be preferred over using `stable` or `oldstable` as a selected, as once `stable` moves to `oldstable`, no security updates will be installed at all, or worse, package from a newer distro release will be installed by accident. The same goes for upgrading your installation from `oldstable` to `stable`, if you forget to change this in your origin patterns, you may not receive the security updates for your newer distro release. With `${distro_codename}`, both cases can never happen. 
 
 Additionally unattended-upgrades support two macros (variables), derived from `/etc/debian_version`:
 
