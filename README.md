@@ -94,13 +94,24 @@ By default, only security updates are allowed for both Ubuntu and Debian. You ca
 #### For Debian
 
 ```yaml
-# Archive based matching
 unattended_origins_patterns:
-  - 'origin=Debian,codename=${distro_codename},label=Debian-Security' # resolves to codename=jessie
-  - 'o=Debian,a=stable'
-  - 'o=Debian,a=stable-updates'
+  - 'origin=Debian,codename=${distro_codename},label=Debian-Security' # security updates
+  - 'o=Debian,codename=${distro_codename},label=Debian' # updates including non-security updates
+  - 'o=Debian,codename=${distro_codename},a=proposed-updates'
+```
+
+On debian wheezy, due to `unattended-upgrades` being `0.79.5`, you cannot use the `codename` directive.
+
+You will have to do archive based matching instead:
+
+```yaml
+unattended_origins_patterns:
+  - 'origin=Debian,a=stable,label=Debian-Security' # security updates
+  - 'o=Debian,a=stable,l=Debian' # updates including non-security updates
   - 'o=Debian,a=proposed-updates'
 ```
+
+Please be sure to read about the issues regarding this in the origin pattern documentation above.
 
 #### For Ubuntu
 
@@ -113,6 +124,26 @@ unattended_origins_patterns:
   - 'o=Ubuntu,a=${distro_codename}-updates'
   - 'o=Ubuntu,a=${distro_codename}-proposed-updates'
 ```
+
+
+#### For Raspbian
+
+In Raspbian, it is only possible to update all packages from the default repository, including non-security updates, or updating none.
+
+Updating all, including non-security:
+
+```yaml
+unattended_origins_patterns:
+  - 'origin=Raspbian,codename=${distro_codename},label=Raspbian'
+```
+
+You can not use the `codename` directive on raspbian wheezy, the same as with debian wheezy above.
+
+To not install any updates on a raspbian host, just set `unattended_origins_patterns` to an empty list:
+```
+unattended_origins_patterns: []
+```
+
 
 ## License
 
