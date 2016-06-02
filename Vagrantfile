@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "debian" do |debian|
-    debian.vm.box = "chef/debian-7.4"
+    debian.vm.box = "debian/wheezy64"
   end
 
   config.vm.define "ubuntu" do |ubuntu|
