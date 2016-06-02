@@ -10,5 +10,21 @@ vagrant destroy --force
 
 vagrant up
 
-vagrant ssh -c "sudo unattended-upgrades -d" debian
-vagrant ssh -c "sudo unattended-upgrades -d" ubuntu
+VMS="
+debian7
+debian8
+ubuntu1204
+ubuntu1404
+ubuntu1604
+"
+
+for name in $VMS; do
+
+    echo ""
+    echo "============================================================"
+    echo "testing on $name"
+    echo "============================================================"
+    echo ""
+
+    vagrant ssh -c "sudo unattended-upgrades -d" $name
+done
