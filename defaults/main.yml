@@ -58,3 +58,5 @@ unattended_automatic_reboot: false
 # If automatic reboot is enabled and needed, reboot at the specific
 # time instead of immediately
 unattended_automatic_reboot_time: false
+
+unattended_verbose: 0
