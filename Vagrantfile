@@ -5,12 +5,24 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.define "debian" do |debian|
-    debian.vm.box = "chef/debian-7.4"
+  config.vm.define "debian7" do |debian|
+    debian.vm.box = "debian/wheezy64"
   end
 
-  config.vm.define "ubuntu" do |ubuntu|
+  config.vm.define "debian8" do |debian|
+    debian.vm.box = "debian/jessie64"
+  end
+
+  config.vm.define "ubuntu1204" do |ubuntu|
+    ubuntu.vm.box = "ubuntu/precise64"
+  end
+
+  config.vm.define "ubuntu1404" do |ubuntu|
     ubuntu.vm.box = "ubuntu/trusty64"
+  end
+
+  config.vm.define "ubuntu1604" do |ubuntu|
+    ubuntu.vm.box = "ubuntu/xenial64"
   end
 
   config.vm.provision :shell, inline: "sudo apt-get install -y python python-apt aptitude"
