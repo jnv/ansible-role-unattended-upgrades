@@ -18,9 +18,9 @@ The role requires unattended-upgrades version 0.70 and newer, which is available
 
 ### Automatic Reboot
 
-If you enable automatic reboot feature (`unattended_automatic_reboot`), the role will install `update-notifier-common` package, which is required for detecting and executing reboot after the upgrade. You may optionally define a specific time for rebooting (`unattended_automatic_reboot_time`).
+If you enable automatic reboot feature (`unattended_automatic_reboot`), the role will attempt to install `update-notifier-common` package, which is required on some systems for detecting and executing reboot after the upgrade. You may optionally define a specific time for rebooting (`unattended_automatic_reboot_time`).
 
-**NOTE:** This feature is not currently supported on Debian Jessie, due to a missing replacement for the said package. Attempt to enable this feature on unsupported system will cause a failure. See [the discussion in #6](https://github.com/jnv/ansible-role-unattended-upgrades/issues/6) for more details.
+This feature was broken in Debian Jessie, but eventually was rolled into the unattended-upgrades package; see [the discussion in #6](https://github.com/jnv/ansible-role-unattended-upgrades/issues/6) for more details.
 
 ## Disabled Cron Jobs
 
