@@ -10,7 +10,7 @@ Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrade
 
 ## Requirements
 
-The role uses [apt module](http://docs.ansible.com/apt_repository_module.html) which has additional dependencies. You can use [bootstrap-debian](https://github.com/cederberg/ansible-bootstrap-debian) role to setup common Ansible requirements on Debian-based systems.
+The role uses [apt module](http://docs.ansible.com/apt_repository_module.html) which has additional dependencies.
 
 If you set `unattended_mail` to an e-mail address, make sure `mailx` command is available and your system is able to send e-mails.
 
