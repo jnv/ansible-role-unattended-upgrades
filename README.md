@@ -51,6 +51,9 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: `false`
 * `unattended_ignore_apps_require_restart`: unattended-upgrades won't automatically upgrade some critical packages requiring restart after an upgrade (i.e. there is `XB-Upgrade-Requires: app-restart` directive in their debian/control file). With this option set to `true`, unattended-upgrades will upgrade these packages regardless of the directive.
     * Default: `false`
+* `unattended_verbose`: Define verbose level of APT
+    * Default: `0` (no report)
+    * Suggested: `1` (progress report)
 
 ## Origins Patterns
 
