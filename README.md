@@ -49,7 +49,9 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: `false`
 * `unattended_automatic_reboot_time`: Automatically reboot system if any upgraded package requires it, at the specific time (_HH:MM_) instead of immediately after the upgrade.
     * Default: `false`
-
+* `unattended_verbose`: Define verbose level of APT
+    * Default: `0` (no report)
+    * Suggested: `1` (progress report)
 
 ## Origins Patterns
 
