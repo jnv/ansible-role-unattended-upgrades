@@ -59,4 +59,18 @@ unattended_automatic_reboot: false
 # time instead of immediately
 unattended_automatic_reboot_time: false
 
+# APT::Periodic::Verbose "0";
+# - Send report mail to root
+#     0:  no report             (or null string)
+#     1:  progress report       (actually any string)
+#     2:  + command outputs     (remove -qq, remove 2>/dev/null, add -d)
+#     3:  + trace on
 unattended_verbose: 0
+
+# When the apt job starts, it will sleep for a random period between 0
+# and APT::Periodic::RandomSleep seconds
+# The default value is "1800" so that the script will stall for up to 30
+# minutes (1800 seconds) so that the mirror servers are not crushed by
+# everyone running their updates all at the same time
+unattended_random_sleep: 0
+

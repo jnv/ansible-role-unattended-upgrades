@@ -75,14 +75,6 @@ Unattended-Upgrade::Automatic-Reboot "true";
 Unattended-Upgrade::Automatic-Reboot-Time "{{ unattended_automatic_reboot_time }}";
 {% endif %}
 
-// APT::Periodic::Verbose "0";
-// - Send report mail to root
-//     0:  no report             (or null string)
-//     1:  progress report       (actually any string)
-//     2:  + command outputs     (remove -qq, remove 2>/dev/null, add -d)
-//     3:  + trace on
-APT::Periodic::Verbose "{{ unattended_verbose }}";
-
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
 //Acquire::http::Dl-Limit "70";
