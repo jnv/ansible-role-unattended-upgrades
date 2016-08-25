@@ -52,6 +52,9 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
 * `unattended_verbose`: Define verbose level of APT
     * Default: `0` (no report)
     * Suggested: `1` (progress report)
+* `unattended_random_sleep`: Define when the apt job starts
+    * Default: `1800`
+    * Suggested: `0`
 
 ## Origins Patterns
 
