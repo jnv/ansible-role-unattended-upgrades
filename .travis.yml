@@ -23,7 +23,7 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
   - apt-config dump | grep 'Unattended-Upgrade "1"'
-  - sudo unattended-upgrades --dry-run -d
+  - sudo unattended-upgrades --dry-run
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
