@@ -22,3 +22,9 @@
   template: >
     src=unattended-upgrades.j2 dest=/etc/apt/apt.conf.d/50unattended-upgrades
     owner=root group=root mode=0644
+
+- name: get rid of backup file
+  file: >
+    path=/etc/apt/apt.conf.d/50unattended-upgrades.ucf-dist
+    state=absent
+
