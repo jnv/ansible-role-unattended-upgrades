@@ -1,5 +1,4 @@
 APT::Periodic::Unattended-Upgrade "1";
-APT::Periodic::Update-Package-Lists "{{unattended_update_package_list}}";
 
 {% if unattended_update_package_list is defined %}
 APT::Periodic::Update-Package-Lists "{{unattended_update_package_list}}";
