@@ -18,8 +18,8 @@
   when: unattended_automatic_reboot
 
 - name: create APT auto-upgrades configuration
-  copy:
-    src: auto-upgrades
+  template:
+    src: auto-upgrades.j2
     dest: /etc/apt/apt.conf.d/20auto-upgrades
     owner: root
     group: root
