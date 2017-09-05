@@ -51,6 +51,23 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: `false`
 * `unattended_ignore_apps_require_restart`: unattended-upgrades won't automatically upgrade some critical packages requiring restart after an upgrade (i.e. there is `XB-Upgrade-Requires: app-restart` directive in their debian/control file). With this option set to `true`, unattended-upgrades will upgrade these packages regardless of the directive.
     * Default: `false`
+* `unattended_verbose`: Define verbosity level of APT for periodic runs. The output will be sent to root.
+    * Possible options:
+      * `0`: no report
+      * `1`: progress report
+      * `2`: + command outputs
+      * `3`: + trace on
+    * Default: `0` (no report)
+* `unattended_update_package_list`: Do "apt-get update" automatically every n-days (0=disable)
+    * Default: `1`
+* `unattended_download_upgradeable`: Do "apt-get upgrade --download-only" every n-days (0=disable)
+    * Default: `0`
+* `unattended_autoclean_interval`: Do "apt-get autoclean" every n-days (0=disable)
+    * Default: `7`
+* `unattended_clean_interval`: Do "apt-get clean" every n-days (0=disable)
+    * Default: `0`
+* `unattended_random_sleep`: Define maximum for a random interval in seconds after which the apt job starts (only for systems without systemd)
+    * Default: `1800` (30 minutes)
 
 ## Origins Patterns
 

@@ -63,3 +63,41 @@ unattended_automatic_reboot_time: false
 # Do upgrade application even if it requires restart after upgrade
 # I.e. "XB-Upgrade-Requires: app-restart" is set in the debian/control file
 unattended_ignore_apps_require_restart: false
+
+### APT::Periodic configuration
+# Snatched from /usr/lib/apt/apt.systemd.daily
+
+#APT::Periodic::Update-Package-Lists "0";
+# - Do "apt-get update" automatically every n-days (0=disable)
+unattended_update_package_list: 1
+
+#APT::Periodic::Download-Upgradeable-Packages "0";
+# - Do "apt-get upgrade --download-only" every n-days (0=disable)
+#unattended_download_upgradeable: 0
+
+#APT::Periodic::AutocleanInterval "0";
+# - Do "apt-get autoclean" every n-days (0=disable)
+unattended_autoclean_interval: 7
+
+#APT::Periodic::CleanInterval "0";
+# - Do "apt-get clean" every n-days (0=disable)
+#unattended_clean_interval: 0
+
+#APT::Periodic::Verbose "0";
+# - Send report mail to root
+#     0:  no report             (or null string)
+#     1:  progress report       (actually any string)
+#     2:  + command outputs     (remove -qq, remove 2>/dev/null, add -d)
+#     3:  + trace on
+#unattended_verbose: 0
+
+## Cron systems only
+
+#APT::Periodic::RandomSleep
+# When the apt job starts, it will sleep for a random period between 0
+# and APT::Periodic::RandomSleep seconds
+# The default value is "1800" so that the script will stall for up to 30
+# minutes (1800 seconds) so that the mirror servers are not crushed by
+# everyone running their updates all at the same time
+# Kept undefined to allow default (1800)
+#unattended_random_sleep: 0
