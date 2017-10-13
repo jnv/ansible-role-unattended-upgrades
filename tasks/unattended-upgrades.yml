@@ -12,7 +12,7 @@
     state: present
 
 - name: install reboot dependencies
-  include: reboot.yml
+  include_tasks: reboot.yml
   when: unattended_automatic_reboot
 
 - name: create APT auto-upgrades configuration
