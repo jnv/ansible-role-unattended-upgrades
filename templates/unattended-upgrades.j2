@@ -81,6 +81,15 @@ Unattended-Upgrade::Automatic-Reboot-Time "{{ unattended_automatic_reboot_time }
 Unattended-Upgrade::IgnoreAppsRequireRestart "true";
 {% endif %}
 
+{% if unattended_dpkg_options %}
+// Append options for governing dpkg behavior, e.g. --force-confdef.
+Dpkg::Options {
+{% for dpkg_option in unattended_dpkg_options %}
+    "{{ dpkg_option }}";
+{% endfor %}
+};
+{% endif %}
+
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
 //Acquire::http::Dl-Limit "70";

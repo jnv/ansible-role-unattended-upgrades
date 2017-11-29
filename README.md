@@ -68,6 +68,8 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: `0`
 * `unattended_random_sleep`: Define maximum for a random interval in seconds after which the apt job starts (only for systems without systemd)
     * Default: `1800` (30 minutes)
+* `unattended_dpkg_options`: Provide dpkg flags during unattended-upgrades runs, e.g. "--force-confdef", "--force-confold"
+    * Default: `[]`
 
 ## Origins Patterns
 

@@ -101,3 +101,15 @@ unattended_autoclean_interval: 7
 # everyone running their updates all at the same time
 # Kept undefined to allow default (1800)
 #unattended_random_sleep: 0
+
+#Dpkg::Options
+# Provide dpkg options that take effect during unattended upgrades.
+# By default no flags are appended. Configuration file changes can
+# block installation of certain packages. Passing the flags
+# "--force-confdef" and "--force-confold" will ensure updates are applied
+# and old configuration files are preserved.
+unattended_dpkg_options: []
+
+# unattended_dpkg_options:
+#   - "--force-confdef"
+#   - "--force-confold"
