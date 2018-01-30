@@ -6,4 +6,7 @@
     pkg: update-notifier-common
     state: present
   ignore_errors: true
-
+  when: |
+          not ( ansible_distribution | lower == 'debian'
+                and ( ansible_distribution_major_version == '8'
+                or    ansible_distribution_major_version == '9'))
