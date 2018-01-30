@@ -5,5 +5,6 @@
   apt:
     pkg: update-notifier-common
     state: present
+  when: not (     ansible_distribution | lower       == 'debian'
+              and ansible_distribution_major_version >= '8' )
   ignore_errors: true
-
