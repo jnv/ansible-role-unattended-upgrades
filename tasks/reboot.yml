@@ -5,5 +5,5 @@
   apt:
     pkg: update-notifier-common
     state: present
-  ignore_errors: true
+  failed_when: false
 
