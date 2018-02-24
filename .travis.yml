@@ -1,29 +1,18 @@
----
-language: python
-python: "2.7"
-sudo: required
-dist: trusty
-before_install:
-  - sudo apt-get update -qq
+services: docker
 
-install:
-  - pip install ansible
-  - "echo localhost > inventory remote_user=root"
+environment:
+  - distribution: ubuntu
+    version: rolling
+  - distribution: ubuntu
+    version: latest
+  - distribution: ubuntu
+    version: trusty
+  - distribution: debian
+    version: testing
+  - distribution: debian
+    version: stable
+  - distribution: debian
+    version: oldstable
 
 script:
-  - "ansible-playbook -i inventory role.yml --connection=local --sudo"
-  - >
-    ansible-playbook -i inventory role.yml --connection=local --sudo
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-  - >
-    ansible-playbook -i inventory role.yml --connection=local --sudo
-    --tags unattended | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-  - apt-config dump | grep 'Unattended-Upgrade "1"'
-  - sudo unattended-upgrades --dry-run
-
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  - ${PWD}/tests/test.sh
