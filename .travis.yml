@@ -1,3 +1,4 @@
+language: bash
 services: docker
 
 environment:
