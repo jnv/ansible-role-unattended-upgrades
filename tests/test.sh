@@ -26,4 +26,4 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 section "Syntax check"
 ansible-playbook -i inventory --syntax-check test.yml
 section "Running role"
-ansible-playbook -i inventory -v test.yml
+ansible-playbook -i inventory test.yml

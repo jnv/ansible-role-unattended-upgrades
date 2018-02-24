@@ -32,8 +32,10 @@
       changed_when: output.stdout
     - setup: # Gather facts
   vars:
-    # Enforce apt update
-    # unattended_cache_valid_time: 0
+    unattended_autofix_interrupted_dpkg: false
+    unattended_minimal_steps: true
+    unattended_install_on_shutdown: true
+    unattended_automatic_reboot: true
   roles:
     # Searched for in ../.. (see ansible.cfg)
     - ansible-role-unattended-upgrades
@@ -45,3 +47,19 @@
     - fail:
         msg: Role failed idempotency check
       when: idempotency.changed
+
+    - name: Get apt-config variables
+      shell: apt-config dump
+      register: aptconfig
+    - name: Check for registered variables
+      assert:
+        that: item in aptconfig.stdout
+      with_items:
+        - 'APT::Periodic::Unattended-Upgrade "1"'
+        - 'Unattended-Upgrade::AutoFixInterruptedDpkg "false"'
+        - 'Unattended-Upgrade::MinimalSteps "true"'
+        - 'Unattended-Upgrade::InstallOnShutdown "true"'
+        - 'Unattended-Upgrade::Automatic-Reboot "true"'
+
+    - name: Dry run unattended-upgrades
+      command: unattented-upgrades --dry-run
