@@ -62,4 +62,4 @@
         - 'Unattended-Upgrade::Automatic-Reboot "true"'
 
     - name: Dry run unattended-upgrades
-      command: unattented-upgrades --dry-run
+      command: /usr/bin/unattended-upgrades --dry-run
