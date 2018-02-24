@@ -24,6 +24,13 @@
 
 - name: Test role
   hosts: docker_containers
+  gather_facts: false
+  pre_tasks:
+    - name: Provision Python
+      raw: bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python-simplejson)"
+      register: output
+      changed_when: output.stdout
+    - setup: # Gather facts
   vars:
     # Enforce apt update
     # unattended_cache_valid_time: 0
