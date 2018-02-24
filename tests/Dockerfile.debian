@@ -5,10 +5,18 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ADD ansible.gpg /etc/apt/trusted.gpg.d/
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends sudo systemd \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+    && apt-get clean
+
 RUN echo 'deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main' >> /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends ansible \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+    && apt-get clean
 
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
