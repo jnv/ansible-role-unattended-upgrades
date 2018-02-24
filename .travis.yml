@@ -1,7 +1,7 @@
 language: bash
 services: docker
 
-environment:
+env:
   - distribution: ubuntu
     version: rolling
   - distribution: ubuntu
