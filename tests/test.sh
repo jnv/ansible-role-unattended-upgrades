@@ -24,6 +24,6 @@ fold_end() {
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 section "Syntax check"
-ansible-playbook test.yml -i inventory --syntax-check
+ansible-playbook -i inventory --syntax-check test.yml
 section "Running role"
-ansible-playbook test.yml -i inventory
+ansible-playbook -i inventory -v test.yml

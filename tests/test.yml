@@ -39,7 +39,7 @@
     - ansible-role-unattended-upgrades
   tasks:
     - name: Idempotency check
-      import_role:
+      include_role:
         name: ansible-role-unattended-upgrades
       register: idempotency
     - fail:
