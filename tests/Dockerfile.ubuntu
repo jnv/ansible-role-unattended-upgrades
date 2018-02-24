@@ -11,4 +11,4 @@ RUN . /etc/os-release \
 
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
-ENTRYPOINT ["/sbin/init"]
+ENTRYPOINT ["/lib/systemd/systemd"]
