@@ -8,5 +8,4 @@ install:
 
 script:
   - ansible --version
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/test.yml -i tests/inventory
+  - tests/test.sh
