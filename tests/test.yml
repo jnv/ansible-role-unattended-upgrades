@@ -1,6 +1,32 @@
-- hosts: all
+---
+- name: Bring up Docker containers
+  hosts: localhost
+  gather_facts: false
+  vars:
+    inventory:
+      - name: ubuntu_rolling
+        image: "ubuntu:rolling"
+      - name: ubuntu_latest
+        image: "ubuntu:latest"
+      - name: ubuntu_trusty
+        image: "ubuntu:trusty"
+      - name: debian_testing
+        image: "debian:testing"
+      - name: debian_stable
+        image: "debian:stable"
+      - name: debian_oldstable
+        image: "debian:oldstable"
+  roles:
+    - role: provision_docker
+      provision_docker_inventory: "{{ inventory }}"
+      provision_docker_privileged: true
+      provision_docker_use_docker_connection: true
+
+- name: Test role
+  hosts: docker_containers
   vars:
     # Enforce apt update
-    unattended_cache_valid_time: 0
+    # unattended_cache_valid_time: 0
   roles:
-    - role_under_test
+    # Searched for in ../.. (see ansible.cfg)
+    - ansible-role-unattended-upgrades

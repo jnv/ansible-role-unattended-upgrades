@@ -1,19 +1,12 @@
-language: bash
+sudo: required
+language: python
 services: docker
 
-env:
-  - distribution: ubuntu
-    version: rolling
-  - distribution: ubuntu
-    version: latest
-  - distribution: ubuntu
-    version: trusty
-  - distribution: debian
-    version: testing
-  - distribution: debian
-    version: stable
-  - distribution: debian
-    version: oldstable
+install:
+  - pip install ansible docker
+  - ansible-galaxy install -r tests/requirements.yml -p tests/roles/
 
 script:
-  - ${PWD}/tests/test.sh
+  - ansible --version
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  - ansible-playbook tests/test.yml -i tests/inventory
