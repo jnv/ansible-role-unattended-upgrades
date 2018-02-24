@@ -37,3 +37,11 @@
   roles:
     # Searched for in ../.. (see ansible.cfg)
     - ansible-role-unattended-upgrades
+  tasks:
+    - name: Idempotency check
+      import_role:
+        name: ansible-role-unattended-upgrades
+      register: idempotency
+    - fail:
+        msg: Role failed idempotency check
+      when: idempotency.changed
