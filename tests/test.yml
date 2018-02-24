@@ -1,3 +1,6 @@
 - hosts: all
+  vars:
+    # Enforce apt update
+    unattended_cache_valid_time: 0
   roles:
     - role_under_test
