@@ -28,6 +28,8 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
 
 ## Role Variables
 
+* `unattended_cache_valid_time`: Update the apt cache if its older than the given time in seconds; passed to the [apt module](https://docs.ansible.com/ansible/latest/apt_module.html) during package installation.
+    * Default: `3600`
 * `unattended_origins_patterns`: array of origins patterns to determine whether the package can be automatically installed, for more details see [Origins Patterns](#origins-patterns) below.
     * Default for Debian: `['origin=Debian,codename=${distro_codename},label=Debian-Security']`
     * Default for Ubuntu: `['origin=Ubuntu,archive=${distro_codename}-security,label=Ubuntu']`

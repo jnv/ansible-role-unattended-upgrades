@@ -10,6 +10,8 @@
   apt:
     pkg: unattended-upgrades
     state: present
+    cache_valid_time: "{{unattended_cache_valid_time}}"
+    update_cache: yes
 
 - name: install reboot dependencies
   include: reboot.yml

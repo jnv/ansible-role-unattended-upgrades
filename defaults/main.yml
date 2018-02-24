@@ -1,4 +1,7 @@
 ---
+# Cache update time for apt module
+unattended_cache_valid_time: 3600
+
 #Unattended-Upgrade::Origins-Pattern
 # Automatically upgrade packages from these origin patterns
 # e.g.: 'o=Debian,a=stable', 'o=Debian,a=stable-updates'
