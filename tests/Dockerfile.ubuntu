@@ -1,9 +1,10 @@
 ARG VERSION
 FROM ubuntu:$VERSION
 
+ADD ansible.gpg /etc/apt/trusted.gpg.d/
+
 RUN . /etc/os-release \
     && echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu $VERSION_CODENAME main" >> /etc/apt/sources.list \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 \
     && apt-get update \
     && apt-get install -y --no-install-recommends ansible \
     && rm -Rf /var/lib/apt/lists/* && apt-get clean
