@@ -11,3 +11,6 @@ install:
 script:
   - ansible --version
   - tests/test.sh
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
