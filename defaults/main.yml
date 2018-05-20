@@ -116,3 +116,7 @@ unattended_dpkg_options: []
 # unattended_dpkg_options:
 #   - "--force-confdef"
 #   - "--force-confold"
+
+
+# Use apt bandwidth limit feature, this example limits the download speed to 70kb/sec
+#unattended_dl_limit: 70

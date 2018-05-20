@@ -73,6 +73,8 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: `1800` (30 minutes)
 * `unattended_dpkg_options`: Array of dpkg command-line options used during unattended-upgrades runs, e.g. `["--force-confdef"]`, `["--force-confold"]`
     * Default: `[]`
+* `unattended_dl_limit`: Limit the downloading speed (kb/sec) to the value you decide (70 is the default)
+    * Default: `[]`
 
 ## Origins Patterns
 
