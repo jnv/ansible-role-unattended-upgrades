@@ -90,6 +90,8 @@ Dpkg::Options {
 };
 {% endif %}
 
+{% if unattended_dl_limit is defined %}
 // Use apt bandwidth limit feature, this example limits the download
 // speed to 70kb/sec
-//Acquire::http::Dl-Limit "70";
+Acquire::http::Dl-Limit "{{ unattended_dl_limit }}";
+{% endif %}
