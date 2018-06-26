@@ -100,6 +100,8 @@ Using `${distro_codename}` should be preferred over using `stable` or `oldstable
 
 ## Role Usage Example
 
+*On Ubuntu, do not copy this on Debian, read below instead*
+
 ```yaml
 - hosts: all
   roles:
