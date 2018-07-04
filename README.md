@@ -96,9 +96,11 @@ Additionally unattended-upgrades support two macros (variables), derived from `/
 * `${distro_id}` – Installed distribution name, e.g. `Debian` or `Ubuntu`.
 * `${distro_codename}` – Installed codename, e.g. `jessie` or `trusty`.
 
-Using `${distro_codename}` should be preferred over using `stable` or `oldstable` as a selected, as once `stable` moves to `oldstable`, no security updates will be installed at all, or worse, package from a newer distro release will be installed by accident. The same goes for upgrading your installation from `oldstable` to `stable`, if you forget to change this in your origin patterns, you may not receive the security updates for your newer distro release. With `${distro_codename}`, both cases can never happen. 
+Using `${distro_codename}` should be preferred over using `stable` or `oldstable` as a selected, as once `stable` moves to `oldstable`, no security updates will be installed at all, or worse, package from a newer distro release will be installed by accident. The same goes for upgrading your installation from `oldstable` to `stable`, if you forget to change this in your origin patterns, you may not receive the security updates for your newer distro release. With `${distro_codename}`, both cases can never happen.
 
 ## Role Usage Example
+
+Example for Ubuntu, with custom [origins patterns](#patterns-examples), blacklisted packages and e-mail notification:
 
 ```yaml
 - hosts: all
@@ -111,6 +113,7 @@ Using `${distro_codename}` should be preferred over using `stable` or `oldstable
     unattended_mail: 'root@example.com'
 ```
 
+_Note:_ You don't need to specify `unattended_origins_patterns`, the role will use distribution's default if the variable is not set.
 
 ### Patterns Examples
 
