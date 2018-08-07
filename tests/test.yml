@@ -4,10 +4,10 @@
   gather_facts: false
   vars:
     inventory:
-      - name: ubuntu_rolling
-        image: "ubuntu:rolling"
       - name: ubuntu_latest
         image: "ubuntu:latest"
+      - name: ubuntu_xenial
+        image: "ubuntu:xenial"
       - name: ubuntu_trusty
         image: "ubuntu:trusty"
       - name: debian_testing
