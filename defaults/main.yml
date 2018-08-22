@@ -120,3 +120,7 @@ unattended_dpkg_options: []
 
 # Use apt bandwidth limit feature, this example limits the download speed to 70kb/sec
 #unattended_dl_limit: 70
+
+# Set to false to turn the role into a no-op. Useful when using
+# the Ansible role dependency mechanism.
+unattended_enabled: true

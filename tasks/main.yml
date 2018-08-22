@@ -1,2 +1,3 @@
  - include: unattended-upgrades.yml
    tags: unattended
+   when: unattended_enabled
