@@ -60,6 +60,7 @@
         - 'Unattended-Upgrade::MinimalSteps "true"'
         - 'Unattended-Upgrade::InstallOnShutdown "true"'
         - 'Unattended-Upgrade::Automatic-Reboot "true"'
+        - 'Unattended-Upgrade::Update-Days {"Sat"}'
 
     - name: Dry run unattended-upgrades
       command: /usr/bin/unattended-upgrades --dry-run
