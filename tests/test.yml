@@ -36,7 +36,7 @@
     unattended_minimal_steps: true
     unattended_install_on_shutdown: true
     unattended_automatic_reboot: true
-    unattended_update_days: '{"Mon"}'
+    unattended_update_days: '{"Sat"}'
   roles:
     # Searched for in ../.. (see ansible.cfg)
     - ansible-role-unattended-upgrades
