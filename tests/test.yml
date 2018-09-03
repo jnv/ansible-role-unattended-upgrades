@@ -36,6 +36,7 @@
     unattended_minimal_steps: true
     unattended_install_on_shutdown: true
     unattended_automatic_reboot: true
+    unattended_update_days: '{"Sat"}'
   roles:
     # Searched for in ../.. (see ansible.cfg)
     - ansible-role-unattended-upgrades
@@ -60,6 +61,10 @@
         - 'Unattended-Upgrade::MinimalSteps "true"'
         - 'Unattended-Upgrade::InstallOnShutdown "true"'
         - 'Unattended-Upgrade::Automatic-Reboot "true"'
+        # NOTE: this uses the array syntax, which requires one
+        # top-level record, then one item per line
+        - 'Unattended-Upgrade::Update-Days "";'
+        - 'Unattended-Upgrade::Update-Days:: "Sat";'
 
     - name: Dry run unattended-upgrades
       command: /usr/bin/unattended-upgrades --dry-run
