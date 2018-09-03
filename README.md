@@ -52,6 +52,8 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: `false`
 * `unattended_automatic_reboot_time`: Automatically reboot system if any upgraded package requires it, at the specific time (_HH:MM_) instead of immediately after the upgrade.
     * Default: `false`
+* `unattended_update_days`: Set the days of the week that updates should be applied. The days can be specified as localized abbreviated or full names. Or as integers where "0" is Sunday, "1" is Monday etc. Example: `{"Mon";"Fri"};`
+    * Default: disabled
 * `unattended_ignore_apps_require_restart`: unattended-upgrades won't automatically upgrade some critical packages requiring restart after an upgrade (i.e. there is `XB-Upgrade-Requires: app-restart` directive in their debian/control file). With this option set to `true`, unattended-upgrades will upgrade these packages regardless of the directive.
     * Default: `false`
 * `unattended_verbose`: Define verbosity level of APT for periodic runs. The output will be sent to root.
