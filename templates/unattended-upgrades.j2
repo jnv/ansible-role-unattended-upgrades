@@ -75,6 +75,15 @@ Unattended-Upgrade::Automatic-Reboot "true";
 Unattended-Upgrade::Automatic-Reboot-Time "{{ unattended_automatic_reboot_time }}";
 {% endif %}
 
+{% if unattended_update_days is defined %}
+// Set the days of the week that updates should be applied. The days can be specified
+// as localized abbreviated or full names. Or as integers where "0" is Sunday, "1" is
+// Monday etc.
+// Example - apply updates only on Monday and Friday:
+// {"Mon";"Fri"};
+Unattended-Upgrade::Update-Days {{ unattended_update_days }};
+{% endif %}
+
 {% if unattended_ignore_apps_require_restart %}
 // Do upgrade application even if it requires restart after upgrade
 // I.e. "XB-Upgrade-Requires: app-restart" is set in the debian/control file
