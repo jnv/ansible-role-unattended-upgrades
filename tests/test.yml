@@ -52,6 +52,9 @@
     - name: Get apt-config variables
       shell: apt-config dump
       register: aptconfig
+
+    - debug: var=aptconfig.stdout
+
     - name: Check for registered variables
       assert:
         that: item in aptconfig.stdout
