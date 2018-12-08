@@ -46,5 +46,4 @@
     - opt: which
       val: "{{ unattended_mail_listchanges_which }}"
   when:
-    - unattended_mail is defined
-    - unattended_mail_listchanges is defined
+    - unattended_mail != False
