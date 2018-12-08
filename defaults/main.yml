@@ -40,12 +40,19 @@ unattended_install_on_shutdown: false
 # If empty or unset then no email is sent, make sure that you
 # have a working mail setup on your system. A package that provides
 # 'mailx' must be installed.
+# This items is also used to configure apt-listchanges
 unattended_mail: false
 
 #Unattended-Upgrade::MailOnlyOnError
 # Set this value to "true" to get emails only on errors. Default
 # is to always send a mail if Unattended-Upgrade::Mail is set
 unattended_mail_only_on_error: false
+
+unattended_mail_listchanges_which: news
+# This configures the "which" option of apt-listchanges.
+# By default only news is sent.
+# Possible options are news, changelogs, or both.
+# Also see 'man apt-listchanges'.
 
 #Unattended-Upgrade::Remove-Unused-Dependencies
 # Do automatic removal of new unused dependencies after the upgrade

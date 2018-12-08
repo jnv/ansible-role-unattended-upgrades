@@ -32,3 +32,19 @@
     owner: root
     group: root
     mode: 0644
+    
+- name: Ensure apt-listchanges emails the configured items
+  ini_file:
+    path: /etc/apt/listchanges.conf
+    section: apt
+    no_extra_spaces: true
+    option: "{{ item.opt }}"
+    value: "{{ item.val }}"
+  with_items:
+    - opt: email_address
+      val: "{{ unattended_mail }}"
+    - opt: which
+      val: "{{ unattended_mail_listchanges_which }}"
+  when:
+    - unattended_mail is defined
+    - unattended_mail_listchanges is defined
