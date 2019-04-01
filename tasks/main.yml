@@ -1,2 +1,7 @@
- - include: unattended-upgrades.yml
+ - include: ubuntu-debian.yml
    tags: unattended
+   when: ansible_distribution == "Ubuntu"
+
+ - include: redhat.yml
+   tags: unattended
+   when: ansible_distribution == "RedHat"

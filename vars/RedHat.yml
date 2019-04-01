@@ -1,0 +1,3 @@
+---
+__unattended_origins_patterns:
+  - 'origin=RedHat,archive=${distro_codename}-security,label=RedHat'
