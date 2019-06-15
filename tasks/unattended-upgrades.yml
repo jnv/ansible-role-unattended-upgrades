@@ -15,7 +15,7 @@
 
 - name: install reboot dependencies
   include: reboot.yml
-  when: unattended_automatic_reboot
+  when: unattended_automatic_reboot|bool
 
 - name: create APT auto-upgrades configuration
   template:
