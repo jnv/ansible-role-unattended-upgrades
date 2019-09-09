@@ -5,9 +5,11 @@
 
 Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrades) for Ubuntu and Debian (since Wheezy), to periodically install security upgrades.
 
-**NOTE:** If you have used version 0.0.1 of the role, you can delete the file `/etc/apt/apt.conf.d/10periodic` as it is not needed anymore. You can use the following one-shot command:
+### Notes
 
-    ansible -m file -a "state=absent path=/etc/apt/apt.conf.d/10periodic" <host-pattern>
+1. If you have used version 0.0.1 of the role, you can delete the file `/etc/apt/apt.conf.d/10periodic` as it is not needed anymore. You can use the following one-shot command:
+    * `ansible -m file -a "state=absent path=/etc/apt/apt.conf.d/10periodic" <host-pattern>`
+1. If you have used an older version of this role, the files `20auto-upgrades` and `50unattended-upgrades` will differ from the system defaults (instead of configuration being placed in a separate file, as we do now).  These can be left as-is as they will be overridden.  During OS upgrades, when asked if these files should be overwritten by the maintainer's package, say yes.  They will then be reset to their default states, and you won't be asked these questions again.
 
 ## Requirements
 
