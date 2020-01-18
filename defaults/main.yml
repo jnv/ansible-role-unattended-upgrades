@@ -27,7 +27,7 @@ unattended_autofix_interrupted_dpkg: true
 # they can be interrupted with SIGUSR1. This makes the upgrade
 # a bit slower but it has the benefit that shutdown while a upgrade
 # is running is possible (with a small delay)
-unattended_minimal_steps: false
+unattended_minimal_steps: true
 
 #Unattended-Upgrade::InstallOnShutdown
 # Install all unattended-upgrades when the machine is shuting down
