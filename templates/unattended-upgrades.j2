@@ -27,13 +27,11 @@ Unattended-Upgrade::Package-Blacklist {
 Unattended-Upgrade::AutoFixInterruptedDpkg "false";
 {% endif %}
 
-{% if unattended_minimal_steps %}
 // Split the upgrade into the smallest possible chunks so that
 // they can be interrupted with SIGUSR1. This makes the upgrade
 // a bit slower but it has the benefit that shutdown while a upgrade
 // is running is possible (with a small delay)
-Unattended-Upgrade::MinimalSteps "true";
-{% endif %}
+Unattended-Upgrade::MinimalSteps "{{ unattended_minimal_steps | lower }}";
 
 {% if unattended_install_on_shutdown %}
 // Install all unattended-upgrades when the machine is shuting down

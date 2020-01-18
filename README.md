@@ -39,7 +39,7 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
 * `unattended_autofix_interrupted_dpkg`: whether on unclean dpkg exit to run `dpkg --force-confold --configure -a`
     * Default: `true`
 * `unattended_minimal_steps`: split the upgrade into the smallest possible chunks so that they can be interrupted with SIGUSR1.
-    * Default: `false`
+    * Default: `true`
 * `unattended_install_on_shutdown`: install all unattended-upgrades when the machine is shuting down.
     * Default: `false`
 * `unattended_mail`: e-mail address to send information about upgrades or problems with unattended upgrades
