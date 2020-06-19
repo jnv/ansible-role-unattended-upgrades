@@ -12,8 +12,9 @@
         image: "ubuntu:xenial"
       - name: ubuntu_trusty
         image: "ubuntu:trusty"
-      - name: debian_testing
-        image: "debian:testing"
+      # 6/2020: Disabled Debian Testing due to missing python packages (python-apt)
+      #- name: debian_testing
+      #  image: "debian:testing"
       - name: debian_stable
         image: "debian:stable"
       - name: debian_oldstable
