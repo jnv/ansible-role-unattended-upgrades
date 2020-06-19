@@ -7,6 +7,7 @@
   when: (ansible_distribution == "Debian") and (ansible_distribution_release == "wheezy")
 
 - name: install unattended-upgrades
+  become: true
   apt:
     pkg: unattended-upgrades
     state: present
@@ -18,6 +19,7 @@
   when: unattended_automatic_reboot|bool
 
 - name: create APT auto-upgrades configuration
+  become: true
   template:
     src: auto-upgrades.j2
     dest: /etc/apt/apt.conf.d/20auto-upgrades
@@ -26,6 +28,7 @@
     mode: 0644
 
 - name: create unattended-upgrades configuration
+  become: true
   template:
     src: unattended-upgrades.j2
     dest: /etc/apt/apt.conf.d/50unattended-upgrades
