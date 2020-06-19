@@ -52,7 +52,7 @@
       when: idempotency.changed
 
     - name: Get apt-config variables
-      shell: apt-config dump
+      command: apt-config dump
       register: aptconfig
     - name: Check for registered variables
       assert:
