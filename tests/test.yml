@@ -29,7 +29,7 @@
   gather_facts: false
   pre_tasks:
     - name: Provision Python
-      raw: bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python-simplejson)"
+      raw: bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python)"
       register: output
       changed_when: output.stdout
     - setup: # Gather facts
