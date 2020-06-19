@@ -54,6 +54,7 @@
     - name: Get apt-config variables
       command: apt-config dump
       register: aptconfig
+      changed_when: false
     - name: Check for registered variables
       assert:
         that: item in aptconfig.stdout
@@ -70,3 +71,4 @@
 
     - name: Dry run unattended-upgrades
       command: /usr/bin/unattended-upgrades --dry-run
+      changed_when:  idempotency.changed|bool
