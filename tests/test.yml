@@ -6,6 +6,8 @@
     inventory:
       - name: ubuntu_latest
         image: "ubuntu:latest"
+      - name: ubuntu_bionic
+        image: "ubuntu:bionic"
       - name: ubuntu_xenial
         image: "ubuntu:xenial"
       - name: ubuntu_trusty
