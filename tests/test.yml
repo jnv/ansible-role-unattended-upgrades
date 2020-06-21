@@ -33,7 +33,8 @@
       raw: bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python)"
       register: output
       changed_when: output.stdout
-    - setup: # Gather facts
+    - name: Gather facts
+      setup:
   vars:
     unattended_autofix_interrupted_dpkg: false
     unattended_minimal_steps: true
@@ -48,13 +49,15 @@
       include_role:
         name: ansible-role-unattended-upgrades
       register: idempotency
-    - fail:
+    - name: fail when idempotency.changed
+      fail:
         msg: Role failed idempotency check
       when: idempotency.changed
 
     - name: Get apt-config variables
-      shell: apt-config dump
+      command: apt-config dump
       register: aptconfig
+      changed_when: false
     - name: Check for registered variables
       assert:
         that: item in aptconfig.stdout
@@ -71,3 +74,4 @@
 
     - name: Dry run unattended-upgrades
       command: /usr/bin/unattended-upgrades --dry-run
+      changed_when:  idempotency.changed|bool
