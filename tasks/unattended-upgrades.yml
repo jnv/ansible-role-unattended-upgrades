@@ -1,10 +1,19 @@
 ---
-- name: add distribution-specific variables
+- name: add Debian variables
   include_vars: "{{ ansible_distribution }}.yml"
+  when: (ansible_distribution == "Debian")
 
 - name: add Debian Wheezy workaround
   include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
   when: (ansible_distribution == "Debian") and (ansible_distribution_release == "wheezy")
+
+- name: add Ubuntu pre Bionic Beaver variables
+  include_vars: "{{ ansible_distribution }}.yml"
+  when: (ansible_distribution == "Ubuntu") and (ansible_facts['distribution_version'] is version('18.04', '<'))
+
+- name: add Ubuntu post Bionic Beaver variables
+  include_vars: "{{ ansible_distribution }}-1804.yml"
+  when: (ansible_distribution == "Ubuntu") and (ansible_facts['distribution_version'] is version('18.04', '>='))
 
 - name: install unattended-upgrades
   apt:
