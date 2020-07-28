@@ -13,6 +13,11 @@
     cache_valid_time: "{{ unattended_cache_valid_time }}"
     update_cache: yes
 
+- name: Ensure powermgmt-base is installed
+  apt:
+    name: powermgmt-base
+    state: present
+
 - name: install reboot dependencies
   include: reboot.yml
   when: unattended_automatic_reboot|bool
