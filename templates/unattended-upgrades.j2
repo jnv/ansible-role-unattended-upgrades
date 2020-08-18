@@ -121,3 +121,7 @@ Dpkg::Options {
 // speed to 70kb/sec
 Acquire::http::Dl-Limit "{{ unattended_dl_limit }}";
 {% endif %}
+
+// Download and install upgrades only on AC power
+// (i.e. skip or gracefully stop updates on battery)
+Unattended-Upgrade::OnlyOnACPower "{{ unattended_only_on_ac_power }}";
