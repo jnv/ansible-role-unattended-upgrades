@@ -57,9 +57,14 @@ Unattended-Upgrade::MailOnlyOnError "true";
 {% endif %}
 
 {% if unattended_remove_unused_dependencies %}
-// Do automatic removal of new unused dependencies after the upgrade
+// Do automatic removal of all unused dependencies after the upgrade
 // (equivalent to apt-get autoremove)
 Unattended-Upgrade::Remove-Unused-Dependencies "true";
+{% endif %}
+
+{% if not unattended_remove_new_unused_dependencies %}
+// Do automatic removal of new unused dependencies after the upgrade
+Unattended-Upgrade::Remove-New-Unused-Dependencies "false";
 {% endif %}
 
 {% if unattended_automatic_reboot %}
