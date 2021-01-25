@@ -41,15 +41,17 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
 * `unattended_autofix_interrupted_dpkg`: whether on unclean dpkg exit to run `dpkg --force-confold --configure -a`
     * Default: `true`
 * `unattended_minimal_steps`: split the upgrade into the smallest possible chunks so that they can be interrupted with SIGUSR1.
-    * Default: `false`
+    * Default: `true`
 * `unattended_install_on_shutdown`: install all unattended-upgrades when the machine is shuting down.
     * Default: `false`
 * `unattended_mail`: e-mail address to send information about upgrades or problems with unattended upgrades
     * Default: `false` (don't send any e-mail)
 * `unattended_mail_only_on_error`: send e-mail only on errors, otherwise e-mail will be sent every time there's a package upgrade.
     * Default: `false`
-* `unattended_remove_unused_dependencies`: do automatic removal of new unused dependencies after the upgrade.
+* `unattended_remove_unused_dependencies`: do automatic removal of all unused dependencies after the upgrade.
     * Default: `false`
+* `unattended_remove_new_unused_dependencies`: do automatic removal of new unused dependencies after the upgrade.
+    * Default: `true`
 * `unattended_automatic_reboot`: Automatically reboot system if any upgraded package requires it, immediately after the upgrade.
     * Default: `false`
 * `unattended_automatic_reboot_time`: Automatically reboot system if any upgraded package requires it, at the specific time (_HH:MM_) instead of immediately after the upgrade.

@@ -6,12 +6,15 @@
     inventory:
       - name: ubuntu_latest
         image: "ubuntu:latest"
+      - name: ubuntu_bionic
+        image: "ubuntu:bionic"
       - name: ubuntu_xenial
         image: "ubuntu:xenial"
       - name: ubuntu_trusty
         image: "ubuntu:trusty"
-      - name: debian_testing
-        image: "debian:testing"
+      # 6/2020: Disabled Debian Testing due to missing python packages (python-apt)
+      #- name: debian_testing
+      #  image: "debian:testing"
       - name: debian_stable
         image: "debian:stable"
       - name: debian_oldstable
@@ -27,10 +30,11 @@
   gather_facts: false
   pre_tasks:
     - name: Provision Python
-      raw: bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python-simplejson)"
+      raw: bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python)"
       register: output
       changed_when: output.stdout
-    - setup: # Gather facts
+    - name: Gather facts
+      setup:
   vars:
     unattended_autofix_interrupted_dpkg: false
     unattended_minimal_steps: true
@@ -45,13 +49,15 @@
       include_role:
         name: ansible-role-unattended-upgrades
       register: idempotency
-    - fail:
+    - name: fail when idempotency.changed
+      fail:
         msg: Role failed idempotency check
       when: idempotency.changed
 
     - name: Get apt-config variables
-      shell: apt-config dump
+      command: apt-config dump
       register: aptconfig
+      changed_when: false
     - name: Check for registered variables
       assert:
         that: item in aptconfig.stdout
@@ -68,3 +74,4 @@
 
     - name: Dry run unattended-upgrades
       command: /usr/bin/unattended-upgrades --dry-run
+      changed_when:  idempotency.changed|bool
