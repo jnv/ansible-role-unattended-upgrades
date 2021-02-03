@@ -71,6 +71,17 @@ unattended_automatic_reboot_time: false
 # I.e. "XB-Upgrade-Requires: app-restart" is set in the debian/control file
 unattended_ignore_apps_require_restart: false
 
+#Unattended-Upgrade::SyslogEnable
+# Write events to syslog, which is useful in environments where syslog
+# messages are sent to a central store.
+unattended_syslog_enable: false
+
+#Unattended-Upgrade::SyslogFacility
+# Write events to the specified syslog facility, or the daemon facility if
+# not specified. Requires the Unattended-Upgrade::SyslogEnable option to be
+# set to true.
+#unattended_syslog_facility: "daemon"
+
 ### APT::Periodic configuration
 # Snatched from /usr/lib/apt/apt.systemd.daily
 

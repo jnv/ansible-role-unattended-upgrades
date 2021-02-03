@@ -58,6 +58,10 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: disabled
 * `unattended_ignore_apps_require_restart`: unattended-upgrades won't automatically upgrade some critical packages requiring restart after an upgrade (i.e. there is `XB-Upgrade-Requires: app-restart` directive in their debian/control file). With this option set to `true`, unattended-upgrades will upgrade these packages regardless of the directive.
     * Default: `false`
+* `unattended_syslog_enable`: Write events to syslog, which is useful in environments where syslog messages are sent to a central store.
+    * Default: `false`
+* `unattended_syslog_facility`: Write events to the specified syslog facility, or the daemon facility if not specified. Will only have affect if `unattended_syslog_enable` is set to `true`.
+    * Default: `daemon`
 * `unattended_verbose`: Define verbosity level of APT for periodic runs. The output will be sent to root.
     * Possible options:
       * `0`: no report
