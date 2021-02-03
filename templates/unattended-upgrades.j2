@@ -98,7 +98,7 @@ Unattended-Upgrade::IgnoreAppsRequireRestart "true";
 {% if unattended_syslog_enable %}
 // Write events to syslog, which is useful in environments where syslog
 // messages are sent to a central store.
-Unattended-Upgrade::SyslogEnable {{ unattended_syslog_enable|bool }};
+Unattended-Upgrade::SyslogEnable "{{ unattended_syslog_enable }}";
 {% if unattended_syslog_facility is defined %}
 // Write events to the specified syslog facility, or the daemon facility
 // if not specified. Requires the Unattended-Upgrade::SyslogEnable option
