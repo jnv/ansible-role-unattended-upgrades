@@ -134,7 +134,7 @@ If you manage multiple distribution with the same playbook, you may want to skip
        when: ansible_facts['os_family'] == 'Debian'
 ```
 
-See #38 for discussion.
+See [#38](https://github.com/jnv/ansible-role-unattended-upgrades/pull/38) for discussion.
 
 ### Patterns Examples
 
