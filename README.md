@@ -106,7 +106,7 @@ Additionally unattended-upgrades support two macros (variables), derived from `/
 
 Using `${distro_codename}` should be preferred over using `stable` or `oldstable` as a selected, as once `stable` moves to `oldstable`, no security updates will be installed at all, or worse, package from a newer distro release will be installed by accident. The same goes for upgrading your installation from `oldstable` to `stable`, if you forget to change this in your origin patterns, you may not receive the security updates for your newer distro release. With `${distro_codename}`, both cases can never happen.
 
-## Role Usage Example
+## Role Usage Examples
 
 Example for Ubuntu, with custom [origins patterns](#patterns-examples), blacklisted packages and e-mail notification:
 
@@ -122,6 +122,19 @@ Example for Ubuntu, with custom [origins patterns](#patterns-examples), blacklis
 ```
 
 _Note:_ You don't need to specify `unattended_origins_patterns`, the role will use distribution's default if the variable is not set.
+
+### Running Only on Debian-based Systems
+
+If you manage multiple distribution with the same playbook, you may want to skip running this role on non-Debian systems. You can [use `when` conditional with role](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html#conditionals-with-roles) to limit the role to particular systems:
+
+```yaml
+- hosts: all
+  roles:
+     - role: jnv.unattended-upgrades
+       when: ansible_facts['os_family'] == 'Debian'
+```
+
+See #38 for discussion.
 
 ### Patterns Examples
 
