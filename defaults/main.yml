@@ -85,6 +85,11 @@ unattended_syslog_enable: false
 ### APT::Periodic configuration
 # Snatched from /usr/lib/apt/apt.systemd.daily
 
+# APT::Periodic::Unattended-Upgrade "1";
+# - Run the "unattended-upgrade" security upgrade script
+#   every n-days (0=disabled)
+unattended_interval: 1
+
 #APT::Periodic::Update-Package-Lists "0";
 # - Do "apt-get update" automatically every n-days (0=disable)
 unattended_update_package_list: 1
