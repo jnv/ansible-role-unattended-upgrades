@@ -135,3 +135,8 @@ unattended_dpkg_options: []
 
 # Use apt bandwidth limit feature, this example limits the download speed to 70kb/sec
 #unattended_dl_limit: 70
+
+# Unattended-Upgrade::OnlyOnACPower
+# Download and install upgrades only on AC power
+# (i.e. skip or gracefully stop updates on battery)
+unattended_only_on_ac_power: false

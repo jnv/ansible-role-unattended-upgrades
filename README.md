@@ -83,6 +83,8 @@ On some hosts you may find that the unattended-upgrade's cronfile `/etc/cron.dai
     * Default: `[]`
 * `unattended_dl_limit`: Limit the download speed in kb/sec using apt bandwidth limit feature.
     * Default: disabled
+* `unattended_only_on_ac_power`: Download and install upgrades only on AC power. It will also install the debian package `powermgmt-base`.
+    * Default: false
 
 ## Origins Patterns
 

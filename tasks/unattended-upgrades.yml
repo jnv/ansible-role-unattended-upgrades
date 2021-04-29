@@ -6,6 +6,14 @@
   include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
   when: (ansible_distribution == "Debian") and (ansible_distribution_release == "wheezy")
 
+- name: install powermgmt-base
+  apt:
+    pkg:
+    state: present
+    cache_valid_time: "{{ unattended_cache_valid_time }}"
+    update_cache: yes
+  when: unattended_only_on_ac_power
+
 - name: install unattended-upgrades
   apt:
     pkg: unattended-upgrades
