@@ -21,10 +21,6 @@
     cache_valid_time: "{{ unattended_cache_valid_time }}"
     update_cache: yes
 
-- name: install reboot dependencies
-  include: reboot.yml
-  when: unattended_automatic_reboot|bool
-
 - name: create APT auto-upgrades configuration
   template:
     src: auto-upgrades.j2
