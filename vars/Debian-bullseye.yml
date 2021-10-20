@@ -1,0 +1,9 @@
+---
+# From https://metadata.ftp-master.debian.org/changelogs//main/u/unattended-upgrades/unattended-upgrades_2.8_changelog
+#  Allow both ${distro_codename} or ${distro_codename}-security on Debian
+#  as security update codenames. The latter will be used starting with
+#  Bullseye, but to help backporting and testing the configuration file keeps
+#  working on Buster and older releases. (Closes: #933138)
+__unattended_origins_patterns:
+  - 'origin=Debian,codename=${distro_codename},label=Debian-Security'
+  - 'origin=Debian,codename=${distro_codename}-security,label=Debian-Security'
