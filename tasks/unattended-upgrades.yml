@@ -26,7 +26,7 @@
     update_cache: yes
 
 - name: install reboot dependencies
-  include: reboot.yml
+  include_tasks: reboot.yml
   when: unattended_automatic_reboot|bool
 
 - name: create APT auto-upgrades configuration
