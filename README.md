@@ -1,3 +1,5 @@
+⚠️ **This role is deprecated!** See the [GitHub issue for alternatives](https://github.com/jnv/ansible-role-unattended-upgrades/issues/98).
+
 # Unattended-Upgrades Role for Ansible
 
 [![Build Status of branch master](https://img.shields.io/travis/jnv/ansible-role-unattended-upgrades/master.svg?style=flat-square)](https://travis-ci.org/jnv/ansible-role-unattended-upgrades)
