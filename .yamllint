@@ -32,5 +32,10 @@ rules:
   new-line-at-end-of-file: "disable"
   new-lines:
     type: "unix"
+  quoted-strings:
+    quote-type: "any"
+    required: True
+    extra-required: [ ]
+    extra-allowed: [ ]
   trailing-spaces: "disable"
   truthy: "disable"
