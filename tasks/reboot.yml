@@ -1,8 +1,8 @@
 ---
 # Ignored, since newer distros don't need this package
 # https://github.com/jnv/ansible-role-unattended-upgrades/issues/6
-- name: install update-notifier-common
+- name: "install update-notifier-common"
   ansible.builtin.apt:
-    pkg: update-notifier-common
-    state: present
+    pkg: "update-notifier-common"
+    state: "present"
   failed_when: false

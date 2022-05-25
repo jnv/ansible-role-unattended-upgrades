@@ -1,17 +1,17 @@
-name: Ansible Lint check
+name: "Ansible Lint check"
 # visit https://github.com/marketplace/actions/ansible-lint for infos
 
-on: [push, pull_request]
+on: ["push", "pull_request"]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: "actions/checkout@v2"
 
-    - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@v6.0.2
+    - name: "Lint Ansible Playbook"
+      uses: "ansible/ansible-lint-action@v6.0.2"
       with:
         targets: "."

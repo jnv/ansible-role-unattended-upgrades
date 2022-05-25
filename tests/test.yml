@@ -1,39 +1,39 @@
 ---
-- name: Bring up Docker containers
-  hosts: localhost
+- name: "Bring up Docker containers"
+  hosts: "localhost"
   gather_facts: false
   vars:
     inventory:
-      - name: ubuntu_latest
+      - name: "ubuntu_latest"
         image: "ubuntu:latest"
-      - name: ubuntu_bionic
+      - name: "ubuntu_bionic"
         image: "ubuntu:bionic"
-      - name: ubuntu_xenial
+      - name: "ubuntu_xenial"
         image: "ubuntu:xenial"
-      - name: ubuntu_trusty
+      - name: "ubuntu_trusty"
         image: "ubuntu:trusty"
       # 6/2020: Disabled Debian Testing due to missing python packages (python-apt)
       #- name: debian_testing
       #  image: "debian:testing"
-      - name: debian_stable
+      - name: "debian_stable"
         image: "debian:stable"
-      - name: debian_oldstable
+      - name: "debian_oldstable"
         image: "debian:oldstable"
   roles:
-    - role: provision_docker
+    - role: "provision_docker"
       provision_docker_inventory: "{{ inventory }}"
       provision_docker_privileged: true
       provision_docker_use_docker_connection: true
 
-- name: Test role
-  hosts: docker_containers
+- name: "Test role"
+  hosts: "docker_containers"
   gather_facts: false
   pre_tasks:
-    - name: Provision Python
-      raw: bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python)"
-      register: output
-      changed_when: output.stdout
-    - name: Gather facts
+    - name: "Provision Python"
+      raw: 'bash -c "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python)"'
+      register: "output"
+      changed_when: "output.stdout"
+    - name: "Gather facts"
       setup:
   vars:
     unattended_autofix_interrupted_dpkg: false
@@ -43,24 +43,24 @@
     unattended_update_days: '{"Sat"}'
   roles:
     # Searched for in ../.. (see ansible.cfg)
-    - ansible-role-unattended-upgrades
+    - "ansible-role-unattended-upgrades"
   tasks:
-    - name: Idempotency check
+    - name: "Idempotency check"
       include_role:
-        name: ansible-role-unattended-upgrades
-      register: idempotency
-    - name: fail when idempotency.changed
+        name: "ansible-role-unattended-upgrades"
+      register: "idempotency"
+    - name: "fail when idempotency.changed"
       fail:
-        msg: Role failed idempotency check
-      when: idempotency.changed
+        msg: "Role failed idempotency check"
+      when: "idempotency.changed"
 
-    - name: Get apt-config variables
-      command: apt-config dump
-      register: aptconfig
+    - name: "Get apt-config variables"
+      command: "apt-config dump"
+      register: "aptconfig"
       changed_when: false
-    - name: Check for registered variables
+    - name: "Check for registered variables"
       assert:
-        that: item in aptconfig.stdout
+        that: "item in aptconfig.stdout"
       with_items:
         - 'APT::Periodic::Unattended-Upgrade "1"'
         - 'Unattended-Upgrade::AutoFixInterruptedDpkg "false"'
@@ -72,6 +72,6 @@
         - 'Unattended-Upgrade::Update-Days "";'
         - 'Unattended-Upgrade::Update-Days:: "Sat";'
 
-    - name: Dry run unattended-upgrades
-      command: /usr/bin/unattended-upgrades --dry-run
-      changed_when:  idempotency.changed|bool
+    - name: "Dry run unattended-upgrades"
+      command: "/usr/bin/unattended-upgrades --dry-run"
+      changed_when: "idempotency.changed | bool"
