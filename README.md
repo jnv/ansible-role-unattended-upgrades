@@ -1,5 +1,10 @@
 # Unattended-Upgrades Role for Ansible
 
+[![Build status of branch master](https://github.com/hifis-net/ansible-role-unattended-upgrades/actions/workflows/ansible-linting-check.yml/badge.svg?branch=master)](https://github.com/hifis-net/ansible-role-unattended-upgrades/actions/workflows/ansible-linting-check.yml)
+[![Ansible Role: hifis.unattended_upgrades](https://img.shields.io/ansible/role/59313)](https://galaxy.ansible.com/hifis/unattended_upgrades)
+[![Ansible Quality Score](https://img.shields.io/ansible/quality/59313)](https://galaxy.ansible.com/hifis/unattended_upgrades)
+[![Ansible Role Downloads](https://img.shields.io/ansible/role/d/59313)](https://galaxy.ansible.com/hifis/unattended_upgrades)
+
 Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrades) for Ubuntu and Debian (since Wheezy), to periodically install security upgrades.
 
 **NOTE:** If you have used version 0.0.1 of the role, you can delete the file `/etc/apt/apt.conf.d/10periodic` as it is not needed anymore. You can use the following one-shot command:
