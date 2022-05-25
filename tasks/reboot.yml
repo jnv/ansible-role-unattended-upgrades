@@ -6,4 +6,3 @@
     pkg: update-notifier-common
     state: present
   failed_when: false
-

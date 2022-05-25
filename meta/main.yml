@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: unattended-upgrades
+  role_name: unattended_upgrades
   author: hifis
   description: Setup unattended-upgrades on Debian-based systems
   license: GPLv2
@@ -38,4 +38,3 @@ galaxy_info:
   - system
   #- web
 dependencies: []
-
