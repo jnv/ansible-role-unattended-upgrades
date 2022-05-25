@@ -1,9 +1,4 @@
-⚠️ **This role is deprecated!** See the [GitHub issue for alternatives](https://github.com/jnv/ansible-role-unattended-upgrades/issues/98).
-
 # Unattended-Upgrades Role for Ansible
-
-[![Build Status of branch master](https://img.shields.io/travis/jnv/ansible-role-unattended-upgrades/master.svg?style=flat-square)](https://travis-ci.org/jnv/ansible-role-unattended-upgrades)
-[![Ansible Role: jnv.unattended-upgrades](https://img.shields.io/ansible/role/8068.svg?style=flat-square)](https://galaxy.ansible.com/jnv/unattended-upgrades/)
 
 Install and setup [unattended-upgrades](https://launchpad.net/unattended-upgrades) for Ubuntu and Debian (since Wheezy), to periodically install security upgrades.
 
