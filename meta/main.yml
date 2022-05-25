@@ -1,6 +1,7 @@
 ---
 galaxy_info:
-  author: Jan Vlnas
+  role_name: unattended-upgrades
+  author: hifis
   description: Setup unattended-upgrades on Debian-based systems
   license: GPLv2
   min_ansible_version: 1.4
