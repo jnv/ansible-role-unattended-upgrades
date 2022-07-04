@@ -1,2 +1,2 @@
- - include: unattended-upgrades.yml
+ - include_tasks: unattended-upgrades.yml
    tags: unattended
