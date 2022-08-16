@@ -1,4 +1,4 @@
-⚠️ **This role is deprecated!** See the [GitHub issue for alternatives](https://github.com/jnv/ansible-role-unattended-upgrades/issues/98).
+⚠️ **This role is deprecated!** See the [GitHub issue for explanation](https://github.com/jnv/ansible-role-unattended-upgrades/issues/98) and [maintained fork](https://github.com/hifis-net/ansible-role-unattended-upgrades) of this role.
 
 # Unattended-Upgrades Role for Ansible
 
